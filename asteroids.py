@@ -18,7 +18,7 @@ ASTEROID_LARGE = 15
 SPEEDS = [10,1,5]
 
 class Engine(object):
-    """ Engine: 
+    """  
         Used to perform rotation, translation and object rotation.
     """
     @staticmethod
@@ -65,8 +65,7 @@ class Engine(object):
         return tp
 
 class Bullet(object):
-    """ Bullet:
-        Represents bullet object.
+    """ 
         Bullets are fired from the ship and points to ship's angle
         Each bullet is added to ship's bullet list which is later used to detect collision
     """
@@ -109,8 +108,7 @@ class Bullet(object):
                 self._ship.bullets.remove(self)
 
 class Asteroid(object):
-    """ Asteroid:
-        Represents asteroid object.
+    """ 
         Asteroid appears from given start point and start moving in the angle direction with given speed
         Each asteroid could be of different size
         Bullet collision detection is performed with every moment
@@ -198,8 +196,7 @@ class Asteroid(object):
                 self._job = self._canv.after(self._speed*5, self._moveit)
 
 class Ship(object):
-    """ Ship:
-        Represents ship object.
+    """ 
         Ship can move Up, Down, Right and Left.
         Bullet fired move to ship's current direction
     """
