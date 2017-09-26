@@ -1,7 +1,6 @@
 #-*- coding: utf-8 -*- 
 from Tkinter import *
 import tkFont
-#import Image, ImageTk
 import math
 import time
 import random
@@ -53,7 +52,7 @@ class Engine(object):
         if dist <= (r1+r2):
             return True
         return False
-    
+
     @staticmethod
     def rotate_center(angle, coords):
         # Given object coordinates, rotate it to change its direction
@@ -129,7 +128,7 @@ class Asteroid(object):
         # rotate the center point of asteroid
         updated_center = Engine.rotate_center(angle, self._canv.coords(self._oval))
         self._canv.coords(self._oval, updated_center)
-        
+
     def get_coords(self):
         # returns coordinates as matrix
         return np.matrix(self._canv.coords(self._oval)).reshape((len(self._coord),2))
@@ -162,7 +161,7 @@ class Asteroid(object):
                     return True
                 Asteroid(self._canv,  self._angle - radians(30), cent, new_size, random.choice(SPEEDS),self._game)
                 Asteroid(self._canv,  self._angle + radians(30), cent, new_size, random.choice(SPEEDS),self._game)
-		        self._canv.update_idletasks()
+                self._canv.update_idletasks()
                 return True
 
         return False
@@ -203,7 +202,7 @@ class Ship(object):
     def __init__(self, canv):
         self._canv = canv
         self._scoord = [(250, 250), (235, 270),(250, 265), (265, 270)]
-        self._ship = self._canv.create_polygon(self._scoord, fill='', outline='white', tags=('ship'))
+        self._ship = self._canv.create_polygon(self._scoord, fill='green', outline='white', tags=('ship'))
         self.angle = -math.pi/2.0
         self.speed = 0.0
         self._lastfire = 0.0
@@ -228,7 +227,7 @@ class Ship(object):
         # rotate ship's center
         updated_center = Engine.rotate_center(angle, self._canv.coords(self._ship))
         self._canv.coords(self._ship, updated_center)
-        
+
     def _moveit(self):
         # move ship with respect to current angle
         # wrap around coordinates if ship moves out of screen
@@ -249,7 +248,7 @@ class Ship(object):
         if self.speed > 0.0:
             self.speed -= 0.1
         self._canv.after(50, self._moveit)
-    
+
     def rotate_left(self, event=None):
         # rotate 30 degrees left
         self.angle -= radians(30.0)
@@ -394,7 +393,7 @@ class Game(object):
             Asteroid(self.canv,  radians(angle),(x,y), shape, speed, self)
 
         self.root.after(1000, self._add_asteroids)
-    
+
 if __name__ == '__main__':
     game = Game()
 
