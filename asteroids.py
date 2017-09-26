@@ -2,7 +2,6 @@
 from Tkinter import *
 import tkFont
 import Image, ImageTk
-import IPython
 import math
 import time
 import random
