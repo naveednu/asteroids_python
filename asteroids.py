@@ -1,6 +1,7 @@
 #-*- coding: utf-8 -*- 
 from Tkinter import *
 import tkFont
+#import Image, ImageTk
 import math
 import time
 import random
@@ -161,6 +162,7 @@ class Asteroid(object):
                     return True
                 Asteroid(self._canv,  self._angle - radians(30), cent, new_size, random.choice(SPEEDS),self._game)
                 Asteroid(self._canv,  self._angle + radians(30), cent, new_size, random.choice(SPEEDS),self._game)
+		        self._canv.update_idletasks()
                 return True
 
         return False
