@@ -1,7 +1,6 @@
 #-*- coding: utf-8 -*- 
 from Tkinter import *
 import tkFont
-import Image, ImageTk
 import math
 import time
 import random
@@ -146,7 +145,7 @@ class Asteroid(object):
             bmat = bullet.get_coords()
             if Engine.detect_collision(bmat[0:1].getA1(), cent, 4, self._size):
                 self._canv.itemconfigure(self._oval, fill='red')
-                self._canv.update()
+                self._canv.update_idletasks()
                 self._canv.after_cancel(self._job)
                 self._job = None
                 self._canv.delete(self._oval)
@@ -185,7 +184,7 @@ class Asteroid(object):
                 if Engine.detect_collision(ship_mat[0:1].getA1(), cent, 15, self._size):
                     # collided with ship, call reset_ship which can either create new ship or game over
                     self._canv.itemconfigure(self._ship._ship, fill='red')
-                    self._canv.update()
+                    self._canv.update_idletasks()
                     self._ship.reset_ship(self._game.decrease_life())
 
             fc = Engine.move_obj(m, self._angle, m[0])
